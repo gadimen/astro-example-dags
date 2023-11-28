@@ -48,7 +48,7 @@ with DAG(
 
     def read_csv(**kwargs):
         fnum = kwargs['file_num']
-        fname = "/home/german/aula_5/aula_5"+str(i)+'.csv'
+        fname = "aula_5"+str(i)+'.csv'
         df = pd.read_csv(fname)
         df = df[['case_number', 'date', 'description']]
         df = df.groupby('description', as_index=False)[['case_number']].count()
@@ -56,7 +56,7 @@ with DAG(
 
     def read_and_join(**kwargs):
         frames = []
-        for i in glob.glob('/home/german/aula_5_stagging/*.csv'):
+        for i in glob.glob('./*.csv'):
             frames.append(pd.read_csv(i))
         df = pd.concat(frames)
         df = df['case_number'].sum()
